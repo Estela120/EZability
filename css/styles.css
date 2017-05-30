@@ -17,22 +17,18 @@ body{
     line-height: 1.7rem;
 }
 
+body, 
+select, 
+input, 
+textarea {color: #333;}
 /*   --- HELPER CLASSES: ----*/
 /*.hide/display:none class makes content "inaccessible" by screen readers. Hide class should position the content off screen, which still leaves it screen reader accessible */
 
 /*hides elements visually, but keep them available for screen-readers.*/
-.invisible {
+.hide {
    position: absolute !important;
    top: -9999px !important;
    left: -9999px !important;
-}
-/*OR / ALTERNATIVE TO .invisible */
-.element-invisible {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px 1px 1px 1px);
 }
 
 /*elements which should not be immediately displayed to any user.*/
@@ -53,7 +49,7 @@ body{
 
 
 
-/*    GROW on hover     */
+/*    GROW element on hover     */
 .grow { transition: all .2s ease-in-out; }
 .grow:hover { transform: scale(1.2); cursor:pointer;}
 
@@ -62,11 +58,27 @@ a[href], input[type='submit'],input[type='reset'], input[type='image'], label[fo
  [type="radio"], .pointer {
        cursor: pointer;
 }
-/*Help text should be explicitly associated with the form control it relates to.This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.*/
-aria-describedby{}
 
 /*appropriate alternative text. FOR Contextual/Validation classes*/
-.sr-only{}
+.sr-only{
+     position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/*Combine with .sr-only to show the element again when it is focused (e.g. by a keyboard-only user)*/
+.sr-only-focusable, :focus.sr-only{
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: auto;
+  clip: auto;
+}
 
 h1, 
 h2, 
@@ -103,13 +115,15 @@ hr {
 }
 
 a {
-  background-color: transparent;  
-}
+    background-color: transparent;  
+    color: #2273AA;}
 
+a:hover {
+    color: #15486A;}
 
 abbr[title] {
-  border-bottom: 1px dotted #777; 
-  cursor: help; 
+  border-bottom: 1px dotted #E74E4E; 
+  cursor: help;  
 }
 
 article,
@@ -185,17 +199,14 @@ b{font-weight: bold;}
 em, i{font-style: italic;}
 
 /* --------------- LIST --------------*/
-ul,
-ol {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-ul ul,
-ol ul,
-ul ol,
-ol ol {
-  margin-bottom: 0;
-}
+ol{ margin-top: 0; 
+    margin-bottom: 1rem; 
+    list-style:decimal;}
+ul{
+    margin-top: 0; 
+    margin-bottom: 1rem; 
+    list-style: circle;}
+
 .list-unstyled {
   padding-left: 0;
   list-style: none;
@@ -224,20 +235,7 @@ dt {
 dd {
   margin-left: 0;
 }
-@media (min-width: 768px) {
-  .dl-horizontal dt {
-    float: left;
-    width: 160px;
-    overflow: hidden;
-    clear: left;
-    text-align: right;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .dl-horizontal dd {
-    margin-left: 180px;
-  }
-}
+
 /* ----------- ALIGNMENT CLASSES ----------*/
 .text-left{text-align: left;}
 .text-right{text-align: right;}
@@ -247,36 +245,34 @@ dd {
 /* ----------- TEXT TRANSFORM CLASSES -----*/
 .text-lowercase{text-transform: lowercase;}
 .text-uppercase{text-transform: uppercase;}
-.text-capitalized{text-transform: capitalize;}
+
 /* ----------- VALIDATION/CONTEXTUAL CLASSES -----*/
 /*Applies the hover color to a particular row or cell*/
-.active{}
 /*Indicates a neutral informative change or action*/
-.info
+.info{color:#2273AA;}
 /*Indicates a successful or positive action*/
-.success{}
+.success{color:#2DAA32;}
 /*Indicates a warning that might need attention*/
-.warning{}
+.warning{color:#F6F525;}
 /*Indicates a dangerous or potentially negative action*/
-.danger{}
+.danger{color: #B73837;}
 
-.text-info{color:;}
-a.text-info{color:;}
+.text-info{color:#15486A;}
+a.text-info{color:#15486A;}
 a.text-info:hover,
-a.text-info:focus{color:#245269;}
-.bg-info{color:#fff; background-color:#337ab7;}
-a.bg-info:hover,
-a.bg-info:focus {
-  background-color: #286090;
-}
+a.text-info:focus{color:#15486A;}
+
+.btn-info{color: white; background-color:#2273AA;}
+.btn-success{color: white;background-color:#2DAA32;}
+.btn-warning{color: white;background-color:#F6F525;}
+.btn-danger{color: white;background-color:#B73837;}
+.alert{
+    background-color: #B73837;
+    color:#fff;}
 
 
-.btn-info{}
-.label-info{}
-.alert{}
 
-/* -------- MEDIA -------*/
-/*********************    START OF RESPONSIVE IMAGES STYLES    **********************/
+/*********************  RESPONSIVE IMAGES STYLES    **********************/
 
 .ez-img img {
     margin;0;
@@ -284,21 +280,15 @@ a.bg-info:focus {
     height: auto;
 }
 .ez-img[alt], .ez-img figcaption {
-    font: italic 1em 'Vollkorn', 'sans-serif';
+    font: italic 1em;
     float:right;
 }
-
-/*********************    END OF RESPONSIVE IMAGES STYLES    **********************/
 
 audio,
 video {
   display: inline-block;
 }
 
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
 
 caption{
     text-align: left; 
@@ -307,7 +297,7 @@ caption{
 
 /* --------- GRID ----------*/
 /*hidden Removes an item from the page, without affecting page flow or causing scrollbars. Much better than display: none; or even visibility: hidden*/
-[hidden]{
+[hide]{
     position: absolute;
     top:-9999px;
     left:-9999px;
@@ -383,20 +373,6 @@ section {
 }
 
 
-/*  GO FULL WIDTH BELOW 480 PIXELS @media queries as soon as the screen size gets less than 480 pixels the columns stack and the margins disappear.*/
-@media only screen and (max-width: 480px) {
-	.col {  margin: 1% 0 1% 0%; }
-    
-    .col-1-12, .col-2-12, .col-3-12, .col-4-12, .col-5-12, .col-6-12, .col-7-12, .col-8-12, .col-9-12, .col-10-12, .col-11-12, .col-12-12 {
-	width: 100%; 
-	}
-}
-@media (min-width: 768px){}
-@media (min-width: 992px){}
-@media (min-width: 1200px){}
-
-
-
 /*     Start of bordered table     */
 
 .ez-table-bordered {
@@ -412,7 +388,8 @@ section {
 }
 
 .ez-table-bordered caption { 
-    font: 2em 'Abril Fatface', 'sans-serif';
+    font: 2em;
+    font-family: inherit;
     text-align:left;
 }
 
@@ -421,7 +398,7 @@ section {
 }
 .ez-table-bordered-th th{
     padding:1.5em;
-    font: 1em 'Abril Fatface', 'sans-serif';
+    font: 1em;
     background-color: #a70900;
     color: white; 
 }
@@ -441,7 +418,6 @@ section {
 /*     Start of Responsive table     */
 
 .ez-responsive {
-    font-family: 'vollkorn', 'sans-serif';
     border: 1px solid black;
     width:90%;
     margin: 0 auto;
@@ -452,7 +428,8 @@ section {
     -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
 }
 .ez-responsive caption { 
-    font: 2em 'Abril Fatface', 'sans-serif';
+    font: 2em;
+    font-family: inherit;
     text-align:left;
 }
 .ez-responsive tr {
@@ -466,43 +443,10 @@ section {
     text-align: center;
 }
 .ez-responsive th {
-    font: bold 1.2em 'Abril Fatface', 'verdana', 'arial';
+    font: bold 1.2em;
+    font-family: inherit;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-@media screen and (max-width: 600px) {
-    .ez-responsive{
-        border: 0;
-        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.13);
-        -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.13);
-        -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.13);
-    }
-    .ez-responsive thead {
-        display: none;
-    }
-    .ez-responsive tr {
-        margin-bottom: 15px;
-        display:block;
-        border-bottom: 1px solid #ddd;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
-        -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
-        -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
-    }
-    .ez-responsive td {
-        display:block;
-        text-align:right;
-        font-size: 15px;
-        border-bottom: 2px dotted #ccc;
-    }
-    .ez-responsive td:last-child {
-        border-bottom: 0;
-    }
-    .ez-responsive td:before {
-        content: attr(data-label);
-        float:left;
-        text-transform: uppercase;
-        font: bold 1.2em 'Abril Fatface', 'verdana', 'arial';
-    }
 }
 
 
@@ -515,13 +459,15 @@ section {
     background-color: rgba(190, 232 255, 1); /* #bee8ff */
     border-collapse: collapse;
     width:100%;
-    font: 1em 'vollkorn', 'verdana', 'san-serif';
+    font: 1em;
+    font-family: inherit;
      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
     -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
     -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
 }
 .ez-table-striped caption { 
-    font: 2em 'Abril Fatface', 'sans-serif';
+    font: 2em;
+    font-family: inherit;
     text-align:left;
 }
 .ez-table-striped-row:nth-child(odd) {
@@ -533,7 +479,8 @@ section {
     text-align:center;
 }
 .ez-table-striped-th-col {
-    font: bold 1.2em 'Abril Fatface', 'verdana', 'arial';
+    font: bold 1.2em;
+    font-family: inherit;
     background-color: #005988;
     color:#fff;
 }
@@ -555,7 +502,7 @@ section {
     -moz-border-radius:10px;
     box-shadow:0px 0px 10px rgba(0, 0, 0, 0.13);
     -webkit-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.13);
-    -moz-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.13)
+    -moz-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.13);
 }
 .ez-form h1 {
     background-color: #00795b;
@@ -567,12 +514,12 @@ section {
     -moz-box-shadow: inset 0px 4px 5px 0px rgba(255, 255, 255, 0.27);
     color:#fff;
     font-size: 1.5em;
-    font-family: 'Rubik', 'verdana', 'sans-serif';
     padding: 10px 0px 5px 10px;
 }
 .ez-form h1 span {
     display:block;
-    font-size:.7em
+    font-size:.7em;
+    font-family: inherit;
 }
 .ez-form fieldset {
     background-color: #fcf2d3;
@@ -582,11 +529,10 @@ section {
     margin-bottom: 15px;
 }
 .ez-form fieldset legend {
-    font: 1em 'Rubik', 'verdana', 'sans-serif';
+    font: 1em;
+    font-family: inherit;
     text-transform:uppercase;
 }
-
-/*to use placeholder text as a label replacement, use an accessible hiding technique for the labels.*/
 
 .ez-form label {
     display:block;
@@ -634,13 +580,153 @@ section {
     display: block;
     margin:5px auto;
 }
-    
-@media only screen and (min-width: 450px) {
-    
+
+/*********************    END OF FORM STYLES    **********************/
+
+
+fieldset{
+    border:0; 
+    padding:0.35 0.75em 0.625em; margin:0;}
+
+button, 
+input, 
+optgroup, 
+select, 
+textarea {
+    font-size: 100%; 
+    line-height: 1.15; 
+    margin:0;}
+
+label{
+    display:block;
 }
 
-@media only screen and (min-width: 960px) {
-    .ez-form {
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;   
+}
+
+[type="search"] {
+  -webkit-appearance: textfield;
+    outline-offset: -2px;
+    border-radius: 15px;
+    height:1.6em;
+    letter-spacing:1px;
+    word-spacing: 2px;
+}
+
+
+
+
+/* --------- CODE ----------*/
+code, kbd, samp, pre{font-family: monospace; font-size: 1em;}
+
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
+
+kbd {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #fff;
+  background-color: #333;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);
+          box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);
+}
+kbd kbd {
+  padding: 0;
+  font-size: 100%;
+  font-weight: bold;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+/* --------- BREAKPOINTS ----------*/
+/*  GO FULL WIDTH BELOW 480 PIXELS @media queries as soon as the screen size gets less than 480 pixels the columns stack and the margins disappear.*/
+@media only screen and (max-width: 480px) {
+	.col {  margin: 1% 0 1% 0%; }
+    
+    .col-1-12, .col-2-12, .col-3-12, .col-4-12, .col-5-12, .col-6-12, .col-7-12, .col-8-12, .col-9-12, .col-10-12, .col-11-12, .col-12-12 {
+	width: 100%; 
+	}
+}
+
+@media only screen and (device-width: 768px) {
+    .ez-responsive{
+        border: 0;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.13);
+        -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.13);
+        -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.13);
+    }
+    .ez-responsive thead {
+        display: none;
+    }
+    .ez-responsive tr {
+        margin-bottom: 15px;
+        display:block;
+        border-bottom: 1px solid #ddd;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
+        -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
+        -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
+    }
+    .ez-responsive td {
+        display:block;
+        text-align:right;
+        font-size: 15px;
+        border-bottom: 2px dotted #ccc;
+    }
+    .ez-responsive td:last-child {
+        border-bottom: 0;
+    }
+    .ez-responsive td:before {
+        content: attr(data-label);
+        float:left;
+        text-transform: uppercase;
+        font: bold 1.2em;
+    }
+    .dl-horizontal dt {
+    float: left;
+    width: 160px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .dl-horizontal dd {
+    margin-left: 180px;
+  }
+  /* For general iPad layouts */
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+     .ez-form {
         max-width:900px;
         margin: 10px auto;
     }
@@ -695,120 +781,6 @@ section {
     .ez-form-clear {
         clear:both;
     }
-    
-}
-
-/*********************    END OF FORM STYLES    **********************/
-
-
-fieldset{
-    border:0; 
-    padding:0.35 0.75em 0.625em; margin:0;}
-
-button, 
-input, 
-optgroup, 
-select, 
-textarea {
-    font-size: 100%; 
-    line-height: 1.15; 
-    margin:0;}
-
-label{
-    display:block;
-}
-
-[type="checkbox"],
-[type="radio"] {
-  box-sizing: border-box;   
-}
-
-[type="search"] {
-  -webkit-appearance: textfield;
-    outline-offset: -2px;
-    border-radius: 15px;
-    height:1.6em;
-    letter-spacing:1px;
-    word-spacing: 2px;
-}
-
-input[type="search"]::-webkit-search-cancel-button {
-  /* Remove default 
-  -webkit-appearance: none;
-  /* Now your own custom styles */
-  height: 10px;
-  width: 10px;
-  background: red;
-  /* Will place small red box on the right of input (positioning carries over) */
-}
-
-
-ol,
-ul{
-    margin-top: 0; 
-    margin-bottom: 1rem; 
-    list-style: none;}
-
-
-
-/* --------- CODE ----------*/
-code, kbd, samp, pre{font-family: monospace; font-size: 1em;}
-
-code {
-  padding: 2px 4px;
-  font-size: 90%;
-  color: #c7254e;
-  background-color: #f9f2f4;
-  border-radius: 4px;
-}
-
-kbd {
-  padding: 2px 4px;
-  font-size: 90%;
-  color: #fff;
-  background-color: #333;
-  border-radius: 3px;
-  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);
-          box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);
-}
-kbd kbd {
-  padding: 0;
-  font-size: 100%;
-  font-weight: bold;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-pre {
-  display: block;
-  padding: 9.5px;
-  margin: 0 0 10px;
-  font-size: 13px;
-  line-height: 1.42857143;
-  color: #333;
-  word-break: break-all;
-  word-wrap: break-word;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-pre code {
-  padding: 0;
-  font-size: inherit;
-  color: inherit;
-  white-space: pre-wrap;
-  background-color: transparent;
-  border-radius: 0;
-}
-
-var{}
-
-/* --------- BREAKPOINTS ----------*/
-
-@media only screen and (device-width: 768px) {
-  /* For general iPad layouts */
-}
-
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
   /* For portrait layouts only */
 }
 
@@ -819,7 +791,7 @@ var{}
 /* ------ NO-PRINT -----------*/
 @media print
 {    
-    .no-print, .no-print *
+    .no-print, .no-print
     {
         display: none !important;
     }
