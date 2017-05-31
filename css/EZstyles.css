@@ -470,6 +470,40 @@ section {
     letter-spacing: 1px;
 }
 
+@media screen and (max-width: 600px) {
+    .ez-responsive{
+        border: 0;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.13);
+        -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.13);
+        -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.13);
+    }
+    .ez-responsive thead {
+        display: none;
+    }
+    .ez-responsive tr {
+        margin-bottom: 15px;
+        display:block;
+        border-bottom: 1px solid #ddd;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
+        -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
+        -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
+    }
+    .ez-responsive td {
+        display:block;
+        text-align:right;
+        font-size: 15px;
+        border-bottom: 2px dotted #ccc;
+    }
+    .ez-responsive td:last-child {
+        border-bottom: 0;
+    }
+    .ez-responsive td:before {
+        content: attr(data-label);
+        float:left;
+        text-transform: uppercase;
+        font: bold 1.2em 'Abril Fatface', 'verdana', 'arial';
+    }
+}
 
 /*     End of Responsive table -moved to bottom    */
 
@@ -608,6 +642,66 @@ section {
     margin:5px auto;
 }
     
+@media only screen and (min-width: 960px) {
+    .ez-form {
+        max-width:900px;
+        margin: 10px auto;
+    }
+    .ez-form h1 {
+        padding:20px 30px 15px 30px;
+        font-size:3em;
+    }
+    .ez-form h1 span {
+        display:block;
+        font-size:.4em;
+        margin-top:25px;
+        font-family: 'Verdana', 'sans-serif';
+    }
+    .ez-form-info { display:none; }
+    .ez-form fieldset {
+        margin:15px;
+        padding: 30px;
+    }
+    .ez-form fieldset legend { font-size: 2em }
+    .ez-form label {
+        float:left;
+        width: 200px;
+        margin: 10px 10px;
+        text-align:right;
+        clear:left;
+    }
+    .ez-form label span {
+        display:block;
+        font-size:.75em;
+    }
+    .ez-form-span-mobile {
+        display:none;
+    }
+    .ez-form-span-desktop {
+        display:none;
+    }
+    .ez-form input[type='text'], .ez-form input[type='submit'], .ez-form textarea, .ez-form select {
+        width: 300px;
+        height: 35px;
+        margin: 10px 10px;
+    }
+    .ez-form input[type='submit'] { margin-left: 220px }
+    
+    .ez-form textarea { height: 100px }
+
+    .ez-form input[type='radio'], .ez-form input[type='checkbox'] {
+        height: 15px;
+        width: 15px;
+        margin: 10px 10px;
+    }
+    .ez-form select {
+        margin: 10px 10px;
+    }
+    .ez-form-clear {
+        clear:both;
+    }
+    
+}
 
 
 /*********************    END OF FORM STYLES    **********************/
@@ -676,52 +770,7 @@ pre code {
 
 @media only screen and (device-width: 768px) {
   /* For general iPad layouts */
-     .dl-horizontal dt {
-        float: left;
-        width: 160px;
-        overflow: hidden;
-        clear: left;
-        text-align: right;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-  }
-  .dl-horizontal dd {
-        margin-left: 180px;
-  }
-    .ez-responsive{
-        border: 0;
-        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.13);
-        -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.13);
-        -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.13);
-    }
-    .ez-responsive thead {
-        display: none;
-    }
-    .ez-responsive tr {
-        margin-bottom: 15px;
-        display:block;
-        border-bottom: 1px solid #ddd;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
-        -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
-        -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.13);
-    }
-    .ez-responsive td {
-        display:block;
-        text-align:right;
-        font-size: 15px;
-        border-bottom: 2px dotted #ccc;
-    }
-    .ez-responsive td:last-child {
-        border-bottom: 0;
-    }
-    .ez-responsive td:before {
-        content: attr(data-label);
-        float:left;
-        text-transform: uppercase;
-        font: bold 1.2em;
-        font-family: inherit;
-    }
-
+     
 }
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 992px) and (orientation:portrait) {
@@ -730,61 +779,6 @@ pre code {
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 1200px) and (orientation:landscape) {
   /* For landscape layouts only */
-    .ez-form {
-        max-width:1200px;
-        margin: 10px auto;
-    }
-    .ez-form h1 {
-        padding:20px 30px 15px 30px;
-        font-size:3em;
-    }
-    .ez-form h1 span {
-        display:block;
-        font-size:.5em;
-        font-family: inherit;
-    }
-    .ez-form fieldset {
-        margin:15px;
-        padding: 30px;
-    }
-    .ez-form fieldset legend { font-size: 2em }
-    .ez-form label {
-        float:left;
-        width: 200px;
-        margin: 10px 10px;
-        text-align:right;
-        clear:left;
-    }
-    .ez-form label span {
-        display:block;
-        font-size:.75em;
-    }
-    .ez-form-span-mobile {
-        display:none;
-    }
-    .ez-form-span-desktop {
-        display:none;
-    }
-    .ez-form input[type='text'], .ez-form input[type='submit'], .ez-form textarea, .ez-form select {
-        width: 300px;
-        height: 35px;
-        margin: 10px 10px;
-    }
-    .ez-form input[type='submit'] { margin-left: 220px }
-    
-    .ez-form textarea { height: 100px }
-
-    .ez-form input[type='radio'], .ez-form input[type='checkbox'] {
-        height: 15px;
-        width: 15px;
-        margin: 10px 10px;
-    }
-    .ez-form select {
-        margin: 10px 10px;
-    }
-    .ez-form-clear {
-        clear:both;
-    }
     
 }
 
