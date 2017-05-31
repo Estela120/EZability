@@ -17,6 +17,7 @@ body{
     line-height: 1.7rem;
     padding: 0 1%;
 }
+
 body, 
 select, 
 input, 
@@ -47,6 +48,12 @@ textarea {color: #333;}
   width: inherit !important; 
   overflow: inherit !important;
 }
+<<<<<<< Updated upstream
+=======
+
+
+*:focus { outline: none; }
+>>>>>>> Stashed changes
 
 /*    GROW on hover     */
 .grow { transition: all .2s ease-in-out; }
@@ -406,6 +413,10 @@ section {
 
 
 /*     Start of bordered table     */
+
+table caption {
+    caption-side: top;
+}
 
 .ez-table-bordered {
     background-color: rgba(0, 0, 0, 0.4);
