@@ -564,6 +564,7 @@ section {
     display:block;
     width: 95%;
     text-align:center;
+    cursor: auto;
 }
 .ez-form-span-mobile {
     font-size:1em;
@@ -600,7 +601,7 @@ section {
 
 .ez-form input[type='radio'], .ez-form input[type='checkbox'] {
    align-items: center;
-    
+   margin:5px;
 }
 .ez-form select {
     display: block;
