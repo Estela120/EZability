@@ -692,9 +692,10 @@ section {
     }
     .ez-form-span-mobile {
         display:none;
+        visibility:hidden
     }
     .ez-form-span-desktop {
-        display:none;
+        margin-top:-10%
     }
     .ez-form input[type='text'], .ez-form input[type='submit'], .ez-form textarea, .ez-form select {
         width: 300px;
@@ -716,7 +717,11 @@ section {
     .ez-form-clear {
         clear:both;
     }
-    
+    .ez-form i {
+        
+        float:right;
+        
+    }
 }
 
 
@@ -816,7 +821,7 @@ button {
     border-radius: 180px;
     background-color: #B73837;
     box-shadow: 2px 2px 2px 2px grey;
-    width: 80px;
+    display:inline;
     height: 80px;
     color:white;
     font-size: 1em;
@@ -875,23 +880,5 @@ button:active {
     width:70px;
     height: 70px;
 }
-input[type]{
-    border: 5px solid #2DAA32;
-    display: inline;
-    height: auto;
-    padding: 3%;
-    background-color: white;
-    border-radius: 90px;
-}
-input[type=button]{
-    border: 5px solid #B73837;
-    font-size-adjust: auto;
-}
-input[type]:hover{
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    font-size-adjust: auto;
-}
-input[type]:active{
-    padding: 7%;
-}
+
 /* END BUTTON SECTION */
