@@ -406,6 +406,8 @@ section {
 .ez-table-bordered caption { 
     font: 2em;
     text-align:left;
+    caption-side:top;
+    background-color:#fff;
 }
 
 .ez-table-bordered th, .ez-table-bordered td {
@@ -425,6 +427,9 @@ section {
 }
 .ez-table-bordered td {
     padding:1em;
+}
+.ez-table-bordered th[scope='row'] {
+    vertical-align: middle;
 }
 
 /*     End of bordered table -moved to bottom     */
@@ -446,6 +451,7 @@ section {
 .ez-responsive caption { 
     font: 2em;
     text-align:left;
+    caption-side:top;
 }
 .ez-responsive tr {
     border: 1px solid #ddd;
@@ -483,6 +489,7 @@ section {
 .ez-table-striped caption { 
     font: 2em;
     text-align:left;
+    caption-side:top;
 }
 .ez-table-striped-row:nth-child(odd) {
     background-color: rgba(98, 200, 255, .5); /* 62c8ff */
@@ -499,7 +506,9 @@ section {
     background-color: #005988;
     color:#fff;
 }
-
+.ez-table-striped-th[scope='row'] {
+    vertical-align: middle;
+}
 /*     End of Striped table     */
 
 
